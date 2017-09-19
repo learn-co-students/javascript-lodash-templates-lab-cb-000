@@ -1,19 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>JavaScript lodash Templates Lab</title>
-  </head>
-  <body>
-    <main>
-    </main>
-    <script src="node_modules/lodash/lodash.min.js"></script>
-    <script src="index.js"></script>
-    <!-- Open this file and call `mocha.run()` in console to run tests -->
-    <div id="mocha"></div>
-    <script src="node_modules/mocha/mocha.js"></script>
-    <script src="node_modules/expect/umd/expect.min.js"></script>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script>mocha.setup('bdd');</script>
-    <script src="test/index-test.js"></script>
-  </body>
-</html>
+
+<head>
+  <title>JavaScript lodash Templates Lab</title>
+</head>
+
+<body>
+  <main>
+    <form id='post-form' onsubmit="createPost(); return false;">
+      Post: <input type='text' id='post'><br> Name: <input type='text' id='author'><br>
+      <input type='submit'>
+    </form>
+  </main>
+
+
+  <!-- Open this file and call `mocha.run()` in console to run tests -->
+  <div id="mocha"></div>
+  <!--<script src="node_modules/mocha/mocha.js"></script>
+  <script src="node_modules/lodash/lodash.min.js"></script>
+  <script src="node_modules/expect/umd/expect.min.js"></script>
+
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.5.3/mocha.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/expect/1.20.2/expect.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    mocha.setup('bdd');
+  </script>
+  <script src="index.js"></script>
+  <script src="test/index-test.js"></script>
+
+  <script id="page-template" type="text/x-lodash-template">
+    <div id="sidebar">
+
+    </div>
+    <div id="post">
+
+    </div>
+  </script>
+  <!---------------Post------------>
+  <script id="post-template" type="text/x-lodash-template">
+    <article>
+      <div class="header">
+        <%= title %>
+      </div>
+      <div class="body">
+        <%= post %>
+      </div>
+      <div class="footer">
+        <%= author %>
+      </div>
+    </article>
+  </script>
+  <!---------------Comments--------->
+  <script id="comments-template" type="text/x-lodash-template">
+    <div id="comments">
+      <%= comments %>
+    </div>
+  </script>
+  <!--------------Comment----------->
+  <script id="comment-template" type="text/x-lodash-template">
+    < div class="comment">
+      <%= comment %>
+        < footer>
+          <%= commenter %>
+            < /footer>
+              < / div>
+  </script>
+
+</body>
