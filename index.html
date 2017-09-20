@@ -9,50 +9,65 @@
   <main>
     <form id='post-form' onsubmit="createPost(); return false;">
       Title: <input type='text' id='title'><br> Content: <input type='text' id='content'><br> Name: <input type='text' id='author'><br>
-      <input type='submit'>
+      <input id='submit' type='submit'>
     </form>
   </main>
-  <div id='post'>
+  <div id='posts'>
 
   </div>
+
+
   <script id="page-template" type="text/x-lodash-template">
     <div id="sidebar">
 
     </div>
     <div id="post">
-
+      <%= post %>
     </div>
+
   </script>
-  <!---------------Post------------>
+
   <script id="post-template" type="text/x-lodash-template">
     <article id='post'>
       <div class="header">
 
         <%= title %>
       </div>
-      so
       <div class="body">
         <%= content %>
       </div>
       <div class="footer">
         <%= author %>
       </div>
+      <div id="comments">
+        <form id='comment-form' onsubmit="postComment(); return false;">
+          Comment: <input type='text' id='comment'><br> By: <input type='text' id='commenter'><br>
+          <input id='submit' type='submit'>
+        </form>
+      </div>
     </article>
   </script>
-  <!---------------Comments--------->
+
+
   <script id="comments-template" type="text/x-lodash-template">
     <div id="comments">
-      <%= comments %>
+      <%= comment %>
     </div>
+
+    <form onsubmit="postComment(); return false;">
+      Comment: <input type='text' id='comment'><br> By: <input type='text' id='commenter'><br>
+      <input id='submit' type='submit'>
+    </form>
   </script>
-  <!--------------Comment----------->
+
   <script id="comment-template" type="text/x-lodash-template">
-    < div class="comment">
+    < div id="comment">
       <%= comment %>
         < footer>
           <%= commenter %>
             < /footer>
               < / div>
+
   </script>
 
   <!-- Open this file and call `mocha.run()` in console to run tests -->
