@@ -2,12 +2,57 @@
 <html>
   <head>
     <title>JavaScript lodash Templates Lab</title>
+    <link href="https://unpkg.com/basscss@7.1.1/css/basscss.min.css" rel="stylesheet"> 
   </head>
   <body>
     <main>
+      <h3 class="h4">New Post</h3>
+      <form onsubmit="createPost();return false;" id="post-form">
+        Title: <input type="text" id="postTitle">
+        <br>
+        Post: <textarea id="postContent"></textarea>
+        <br>
+        Author: <input type="text" id="postAuthor">
+        <br>
+        <input type="submit">
+      </form>
     </main>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
+
+    <script id="post-template" type="text/x-lodash-template">
+      <article class="post">
+      <header><h2><a href="#" class="black"><%- title %></a></h2></header>
+        <p class="content"><%- post %></p>
+      <footer>Posted By: <%- author %></footer>
+      </article>
+    </script>
+
+    <script id="page-template" type="text/x-lodash-template">
+      <div id="post"></div>
+      <div id="sidebar"></div>
+    </script>
+
+    <script id="comment-template" type="text/x-lodash-template">
+      <div class="comment">
+        <div class="comment-body"><%- content %></div>
+      <footer>
+        <div class="commenter"><p>Posted By: <%- commenter %></p></div>
+      </footer>
+      </div>
+    </script>
+
+    <script id="comments-template" type="text/x-lodash-template">
+      <form onsubmit="postComment();return false;" id="comment-form">
+        Comment: <input type="text" id="commentContent">
+        <br>
+        Commenter: <input type="text" id="commentCommenter">
+        <br>
+        <input type="submit">
+      </form>
+      <div id="comments"></div>
+    </script>
+
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
