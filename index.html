@@ -2,11 +2,68 @@
 <html>
   <head>
     <title>JavaScript lodash Templates Lab</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="lodash.js"></script>
   </head>
   <body>
-    <main>
+    <main class="container">
+      <form onsubmit="createPost();return false;" id="post-form">
+        <div class="form-group">
+          <label for="postTitle">Title:</label>
+          <input type="text" class="form-control" id="postTitle">
+        </div>
+        <div class="form-group">
+          <label for="postBody">Body:</label>
+          <input type="text" class="form-control" id="postBody">
+        </div>
+        <div class="form-group">
+          <label for="postAuthor">Author:</label>
+          <input type="text" class="form-control" id="postAuthor">
+        </div>
+        <input type="submit" class="btn btn-default" value="Create Post">
+      </form>
+      <div id="page">
+      </div>
     </main>
-    <script src="node_modules/lodash/lodash.min.js"></script>
+    <script id="page-template" type="text/x-lodash-template">
+      <h2><%= postsTitle %></h2>
+      <div class="row">
+        <div id="post" class="col-sm-8"></div>
+        <div id="sidebar" class="col-sm-4"></div>
+      </div>
+    </script>
+
+    <script id="post-template" type="text/x-lodash-template">
+      <article class="card card-outline-success mb-3 text-center">
+        <header class="card-header"><%= postTitle %></header>
+        <div class="card-block"><%= postBody %></div>
+        <footer class="card-footer"><%= postAuthor %></footer>
+      </article>
+      <div id="comment-form"></div>
+    </script>
+
+    <script id="comments-template" type="text/x-lodash-template">
+      <h2><%= formTitle %></h2>
+      <form onsubmit="postComment();return false;" id="comment-form">
+        <div class="form-group">
+          <label for="commenter">COMMENTER:</label>
+          <input type="text" class="form-control" id="commenter">
+        </div>
+        <div class="form-group">
+          <label for="comment">Author:</label>
+          <input type="text" class="form-control" id="comment">
+        </div>
+        <input type="submit" class="btn btn-default" value="Create Comment">
+      </form>
+      <div id="comments"></div>
+      </div>
+    </script>
+
+    <script id="comment-template" type="text/x-lodash-template">
+      <div id="comment"><%= comment %></div>
+      <footer><%= commenter %></footer>
+    </script>
+
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
