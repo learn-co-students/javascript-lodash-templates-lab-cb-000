@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>JavaScript lodash Templates Lab</title>
+    <link rel = 'stylesheet'  href = 'https://npmcdn.com/basscss@8.0.1/css/basscss.min.css'>
   </head>
+
   <body>
     <main>
+
+      <form id = 'post-form' onsubmit = "createPost(event)">
+        <label for = 'title'>Title:</label>
+        <input  type = 'text' id = 'title'/><br>
+        <label for = 'body'>Body</label>
+        <textarea type = 'text' id = 'body' ></textarea><br>
+        <label for = 'author'>Author:</label>
+        <input type = 'text' id = 'author' /><br>
+        <input type = 'submit' /><br>
+      </form>
+
+      <div id = 'pages'>
+      </div>
+
     </main>
+
+
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
@@ -15,5 +34,78 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
+
+    <!--lodash templates -->
+
+    <script id = 'page-template'  type = 'text/x-lodash-template'>
+
+    <div  class = 'flex rounded border p1' >
+
+      <div id="sidebar" class = 'ml1 left border mr2'>
+          <%= sidebar %>
+      </div>
+
+    <div>
+
+      <div id="post"  class = 'ml1 '>
+          <%= post %>
+      </div><br>
+
+      <%= comments %>
+
+    </div>
+
+    </div>
+
+
+
+    </script>
+
+    <script id = 'post-template'  type = 'text/x-lodash-template'>
+        <header>
+          <p>Title: <%- title %></p>
+        </header>
+
+        <article>
+          <p>Body <%- body %></p>
+        </article>
+
+        <footer>
+          <p>Author:<%- author %></p>
+        </footer>
+    </script>
+
+    <script  id = 'comments-template'  type = 'text/x-lodash-template'>
+
+      <div id="comments">
+
+        <form onsubmit="postComment(event)" id = 'comment-form'>
+          <label for = 'commentText'>Comment:</label>
+          /*<input type = 'text' id = 'commentText_<%- post_id %>' /><br>*/
+          <input type = 'text' id = 'commentText' /><br>*/
+          <label for = 'commenter'>Your Name:</label>
+          /*<input type = 'text' id = 'commenter_<%- post_id %>'  /><br>*/
+          <input type = 'text' id = 'commenter'  /><br>
+          <input type = 'submit'>
+        </form>
+
+/*        <div id = 'comments_<%- post_id %>'>*/
+        <div id = 'comments'>
+        </div>
+
+      </div>
+
+    </script>
+
+    <script  id = 'comment-template'  type = 'text/x-lodash-template'>
+      <% if(commentText && commenter) { %>
+        <%-commentText %>
+        <footer>
+          <p>Posted By: </p> <%-commenter %>
+        </footer>
+      <% } %>
+    </script>
+
+    <script type = 'text/javascript' src = 'lodash.min.js'></script>
   </body>
 </html>
