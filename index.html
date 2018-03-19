@@ -7,7 +7,7 @@
     <main >
       <div id="page"></div>
       <h3>Create a New Post</h3>
-      <form id="post-form" onsubmit="createPost()">
+      <form id="post-form" onsubmit="createPost(); return false;">
         Post Title: <input type="text" id="postTitle"><br><br>
         Post: <input type="textarea" id="postBody"><br><br>
         Author: <input type="text" id="postAuthor"><br><br>
@@ -17,9 +17,8 @@
     </main>
 
     <script id="page-template" type="text/x-lodash-template">
-      <div id="sidebar"><%= sidebar %></div>
-      <div id="post"><%- post %></div>
-      <div id="commentArea"><%- comments %></div>
+      <div id="sidebar"></div>
+      <div id="post"></div>
     </script>
 
     <script id="post-template" type="text/x-lodash-template">
@@ -35,13 +34,14 @@
             posted by <%- author %>
           </footer>
         <article>
+        <div id="comments"></div>
       </div>
     </script>
 
     <script id="comments-template" type="text/x-lodash-template">
-     <div id="comments"></div>
+     <div id="comment"></div>
      <h3>Comment</h3>
-     <form onsubmit="postComment()">
+     <form onsubmit="postComment(); return false;">
        Name: <input type="text" id="commenterName"><br><br>
        Comment: <input type="textarea" id="commentText"><br><br>
        <input type="submit">
