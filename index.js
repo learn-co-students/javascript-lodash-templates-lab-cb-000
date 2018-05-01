@@ -5,8 +5,13 @@ function createPost(){
   var postTemplate = document.getElementById('post-form').innerHTML
   var templateFn = _.template(postTemplate)
 
+  var postsDiv = document.getElementById('create-post')
+
   var templateHTML = templateFn({'title': title,
   'body': body, 'author': author})
+
+  postsDiv.innerHTML += templateHTML
+
 
 }
 
@@ -18,7 +23,7 @@ function postComment(){
 
   var templateFn = _.template(commentTemplate)
 
-  var commentsDiv = document.getElementId('comments')
+  var commentsDiv = document.getElementById('comments')
 
   var templateHTML = templateFn({'comment': comment,
     'commenter': commenter})
