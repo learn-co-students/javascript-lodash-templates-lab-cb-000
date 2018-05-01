@@ -2,7 +2,7 @@ function createPost(){
   var title = document.getElementById('title').value
   var body = document.getElementById('body').value
   var author = document.getElementById('author').value
-  var postTemplate = document.getElementById('post-form').innerHTML
+  var postTemplate = document.getElementById('post-template').innerHTML
   var templateFn = _.template(postTemplate)
 
   var postsDiv = document.getElementById('create-post')
@@ -19,7 +19,7 @@ function postComment(){
   var commenter = document.getElementById('commenterName').value
   var comment = document.getElementById('commentText').value
 
-  var commentTemplate = document.getElementById('comment-template').innerHTML
+  var commentTemplate = document.getElementById('comments-template').innerHTML
 
   var templateFn = _.template(commentTemplate)
 

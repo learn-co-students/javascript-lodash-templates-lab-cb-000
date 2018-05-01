@@ -40,6 +40,7 @@
     </script>
     <script id = "page-template" type= "text/x-lodash-template">
       <div id = 'sidebar'> </div>
+      <div id = 'post'> </div>
     </script>
     <script id = "post-template" type= "text/x-lodash-template">
      <article>
@@ -49,11 +50,11 @@
       </article>
     </script>
     <script id = "comments-template" type= "text/x-lodash-template">
-      <div class="comments">
-        <div class="comment-body"><%- comment %></div>
-        <div class="commenter">
+      <div id="comments">
+        <div id="comment-body"><%- comment %></div>
+        <div id="commenter">
           <p>
-            <span class="posted-by">Posted By: </span>
+            <span id="posted-by">Posted By: </span>
             <%- commenter %>
           </p>
         </div>
