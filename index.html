@@ -11,6 +11,7 @@
         Author: <input type='text' id='postAuthor'>
         <input type='submit'>
       </form>
+      <div id='post'></div>
     </main>
 
     <script id="page-template" type="text/x-lodash-template">
@@ -18,25 +19,29 @@
       <div id='post'></div>
     </script>
 
-    <script id="comment-template" type="text/x-lodash-template">
-      <div id=""></div>
-      <div id=''></div>
-      <%= %>
+    <script id="comments-template" type="text/x-lodash-template">
+      <div id="comments">
+        <form id='comment-form' onsubmit="postComment();return false;">
+          Body: <input type='textArea' id='comment'>
+          Author: <input type='text' id='commenter'>
+          <input type='submit'>
+        </form>
+      </div>
     </script>
 
-    <script id="comments-template" type="text/x-lodash-template">
-      <div id=""></div>
-      <div id=''></div>
-      <%= comment %>
-      <%= commenter %>
+    <script id="comment-template" type="text/x-lodash-template">
+      <div>
+        <p><%= comment %></p>
+        <footer><%= commenter %></footer>
+      </div>
     </script>
 
     <script id="post-template" type="text/x-lodash-template">
-      <div id=""></div>
-      <div id=''></div>
-      <%- title %>
-      <%- body %>
-      <%= poster %>
+      <article>
+        <header><%- title %></header>
+        <p><%- body %></p>
+        <footer><%= poster %></footer>
+      </article>
     </script>
 
     <script src="node_modules/lodash/lodash.min.js"></script>
