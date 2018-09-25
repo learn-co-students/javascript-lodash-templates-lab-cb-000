@@ -11,7 +11,7 @@ const creatPost = () => {
   let blogSection = postTemplate({title: postTitle, body: post, poster: postAuthor})
   let commentsSeciton = commentsTemplate();
 
-  let postElement = docuemtn.getElementById("post")
+  let postElement = document.getElementById("post")
   postElement.innerHTML = blogSection
   postElement.getElementsByTagName("footer")[0].innerHTML = commentsSection;
 }
