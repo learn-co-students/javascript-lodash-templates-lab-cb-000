@@ -5,15 +5,52 @@
   </head>
   <body>
     <main>
+        <div id="blogForm">
+            <form id="post-form" onsubmit="createPost(); return false;")> 
+                Title: <br><input type=text id="postTitle"><br>
+                Content:<br>
+                 <textarea id="postText" name="Content" cols="80" rows="5"></textarea><br>
+                Author: <br><input  type=text id="postAuthor"><br><br>
+                <input type="submit"  value="Submit Blog">
+            </form>
+        </div>
+        <div id='sidebar'></div>
+        <div id='post'></div>
+        <div id='comment' style="width: 600px;"></div>
+
     </main>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
-    <!-- Open this file and call `mocha.run()` in console to run tests -->
-    <div id="mocha"></div>
-    <script src="node_modules/mocha/mocha.js"></script>
-    <script src="node_modules/expect/umd/expect.min.js"></script>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script>mocha.setup('bdd');</script>
-    <script src="test/index-test.js"></script>
+
+
+
+    <!-- This is how the HTML will be loaded - in this format -->
+    <script id="post-template" type="text/x-lodash-template">
+       <article>
+        <header><h2><%- title %></h2></header>
+        <p><%- body %></p>
+        <footer>Posted by:  <%= poster %></footer>
+       </article>
+    </script>
+     
+    <script id="comments-template" type="text/x-lodash-template">
+        <div id="comments">
+            <br><br>
+            <h2>Comments</h2>
+            <form onsubmit="postComment();return false;">
+                Name: <input type="text" id="commenter"><br>
+                <textarea id="commentText" name="Comment" cols="80" rows="5"></textarea><br><br>
+                <input type="submit" value="Submit Comment">
+            </form>
+         </div>
+    </script>
+
+    <script id="comment-template" type="text/x-lodash-template">
+        <div style="border-top: 1px solid #ccc">
+            <p><b>COMMENT:</b>  <%= comment %></p>
+            <footer><b>POSTED BY:</b>  <%= commenter %></footer>
+        </div>
+    </script>
+
   </body>
 </html>
