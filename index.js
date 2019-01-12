@@ -24,16 +24,15 @@ function createPost() {
     //set the innerHTML properly formatted string
    postDiv.innerHTML += postTemplateHTML;
 
-  // var commentsSection = commentsTemplate();
-  // postDiv.getElementsByTagName("footer")[0].innerHTML = commentsSection;
-
     //create the comment template
     var commentsTemplate=document.getElementById("comments-template").innerHTML;
     //create the comment template function for Lodash
     var commentsTemplateFn = _.template(commentsTemplate);
-    //get the div where the comments are going
+  
     //execute Lodash to generate the HTML
     var commentsTemplateHTML = commentsTemplateFn();
+   
+    //get the div where the comments input form is going
     //set the innerHTML of the properly formatted string
     postDiv.innerHTML += commentsTemplateHTML;
 
@@ -41,16 +40,6 @@ function createPost() {
    var myForm = document.getElementById("post-form")
    myForm.hidden = "true"; 
 }
-//NOTE:
-//Two things:
-//1.  Comment form is printing after each comment
-//2.  Comment is not printing ... understand where the
-//    comments are supposed to print
-//    Console shows:
-//    <div>
-//        <p></p>   <- I think thats where comment goes
-//        <footer></footer> <- where commenter goes?
-//    <div>
 
 function postComment() {
 
@@ -72,6 +61,7 @@ function postComment() {
 
     //execute Lodash with our template function, passing JSon objects
     var postCommentHTML = postCommentFn({'comment':comment,'commenter':commenter});
+
     //set the innerHTML properly formatted string
     commentDiv.innerHTML += postCommentHTML;
 
