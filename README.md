@@ -1,3 +1,5 @@
+Incompatible module errors
+
 # JavaScript Lodash Templates Lab
 
 ## Objectives
